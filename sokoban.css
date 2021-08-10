@@ -1,0 +1,40 @@
+
+#map {
+
+    display: grid;
+    grid-template-columns: repeat(19, 40px);
+    grid-template-rows: repeat(16, 40px);
+
+}
+
+.block {
+    width: 40px;
+    height: 40px;
+}
+
+.tile-wall {
+    background-color: gray;
+}
+
+.tile-space {
+    background-color: lightgray;
+}
+
+.tile-goal {
+    background-color: yellow;
+}
+
+.entity-player {
+    background-color: red;
+}
+
+.entity-block {
+    background-color: blue;
+}
+
+.entity-block-goal {
+    background-color: green;
+}
+
+
+
