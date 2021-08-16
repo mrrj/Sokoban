@@ -92,22 +92,22 @@ function movePlayer(xPosChange, yPosChange) {
 
     let nextElementClass = nextElement.className;
 
-    if (nextElement.classList.contains("tile-space")) {
-        moveTo(nextElement, nextElementClass, "entity-player");
-        moveFrom(currentElement, "entity-player", currentElementClass);
+    if (nextElement.classList.contains("tile-space") ||
+           nextElement.classList.contains("tile-goal")){
+        nextElement.classList.replace(nextElementClass,"entity-player");
+        currentElement.classList.replace("entity-player", currentElementClass);
     }
-    else if (nextElement.classList.contains("tile-goal")) {
-        moveTo(nextElement, nextElementClass, "entity-player");
-        moveFrom(currentElement, "entity-player", currentElementClass);
-    }
+
     else if (nextElement.classList.contains("entity-block")) {
         nextElementClass = "tile-space";
 
         let nextBlockPosition = getNextElement(2*xPosChange,2*yPosChange);
+        let nextBlockPositionClass = nextBlockPosition.className;
+        let entityClass = nextElement.className;
 
         if(nextBlockPosition.classList.contains("tile-space")){
-            nextBlockPosition.classList.replace("tile-space","entity-block");
-            nextElement.classList.replace("entity-block","entity-player");
+            nextBlockPosition.classList.replace(nextBlockPositionClass,entityClass);
+            nextElement.classList.replace(entityClass,"entity-player");
             currentElement.classList.replace("entity-player", currentElementClass);
         }
         else if(nextBlockPosition.classList.contains("tile-goal")){
@@ -117,7 +117,7 @@ function movePlayer(xPosChange, yPosChange) {
         }
         else {
             return false;
-        }        
+        }   
     }
     else if(nextElement.classList.contains("entity-block-goal")){
         nextElementClass = "tile-goal";
@@ -144,18 +144,8 @@ function movePlayer(xPosChange, yPosChange) {
     playerXPos += xPosChange;
     playerYPos += yPosChange;
     currentElementClass = nextElementClass;
-
     return true;
 
-}
-
-
-function moveTo(toElement, tileClass, entityClass) {
-    toElement.classList.replace(tileClass, entityClass);
-}
-
-function moveFrom(fromElement, entityClass, tileClass) {
-    fromElement.classList.replace(entityClass, tileClass);
 }
 
 
