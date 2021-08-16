@@ -7,9 +7,17 @@
 
 }
 
-.block {
-    width: 40px;
-    height: 40px;
+
+.entity-player {
+    background-color: red;
+}
+
+.entity-block {
+    background-color: blue;
+}
+
+.entity-block-goal {
+    background-color: green;
 }
 
 .tile-wall {
@@ -24,17 +32,6 @@
     background-color: yellow;
 }
 
-.entity-player {
-    background-color: red;
-}
-
-.entity-block {
-    background-color: blue;
-}
-
-.entity-block-goal {
-    background-color: green;
-}
 
 
 
